@@ -1,0 +1,25 @@
+@font-face {
+    font-family:'myfont';
+    src: url(/Users/d.shiba/Desktop/testcode-for-hackathon/amongus\ vector.ttf);
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'myfont';
+    background: #6382a2;
+    text-align: center;
+}
+.error_message{
+    font-size: 3rem;
+}
+
+.container a{
+    color: inherit;
+}
+
+footer {
+    margin-top: auto;
+    font-size: 1rem;
+    text-align: center;
+}
