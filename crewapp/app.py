@@ -10,6 +10,7 @@ def hello_world():
 #ログイン・ログアウト処理
 
 #googleAPI連携
+print("hello")
 
 if name == 'main':
     app.run(debug=True)
