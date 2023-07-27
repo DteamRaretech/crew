@@ -48,6 +48,8 @@ body{
 }
 
 #modal-container.active {
+    /*このclassはHTMLには記述がなく、JSでactiveを付与する*/
     opacity: 1;
     pointer-events: auto;
+    /**/
 }

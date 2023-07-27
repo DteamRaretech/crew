@@ -12,6 +12,17 @@
                 <input type="text" name="email" placeholder="Email">
                 <input type="password" name="password" placeholder="Password">
                 <input type="submit" name="" value="Login">
+                    <!-- flashメッセージ用
+                    <div class="registration-button-container">
+                        {% with messages = get_flashed_messages() %} {% if messages %}
+                        <ul class="flashes">
+                          {% for message in messages %}
+                          <li>{{ message }}</li>
+                          {% endfor %}
+                        </ul>
+                        {% endif %} {% endwith %}
+                    </div>
+                    -->
                 <a class="switch-form" href="signup.html">サインアップ</a>
             </form>
 

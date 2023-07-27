@@ -13,8 +13,19 @@
                     <input type="text" name="email" placeholder="Email">
                     <input type="password" name="password1" placeholder="Password">
                     <input type="password" name="password2" placeholder="Password Confirmation">
-                    
+
                     <input type="submit" name="" value="Signup">
+                        <!-- flashメッセージ用
+                        <div class="registration-button-container">
+                            {% with messages = get_flashed_messages() %} {% if messages %}
+                            <ul class="flashes">
+                                {% for message in messages %}
+                                <li>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                                {% endif %} {% endwith %}
+                        </div>
+                        -->
                 <a class="switch-form" href="login.html">ログイン</a>
             </form>
 
