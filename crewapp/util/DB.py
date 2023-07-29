@@ -1,5 +1,5 @@
 # モジュールを読み込む
-import pymysql.cursors
+import pymysql
 
 # pymysqlと接続するクラスを宣言
 class DB:
