@@ -26,7 +26,7 @@ def signup():
 
 @app.route('/signup' , methods=['POST'])
 
-def UserSignup()
+def UserSignup():
     
     # フォームからサインアップ情報を取得
     username = request.form.get('name')
@@ -50,7 +50,7 @@ def UserSignup()
 
     # usersテーブル重複チェック準備
 
-    def GetUser(email)
+    def GetUser(email):
         try:
             connection = DB.getConnection()
             cursor = connection.cursor()
@@ -66,7 +66,7 @@ def UserSignup()
     
     # usersテーブルINSERT準備
 
-    def InsertUser(uid, username, email, password1)
+    def InsertUser(uid, username, email, password1):
         try:
             connection = DB.getConnection()
             cursor = connection.cursor()
