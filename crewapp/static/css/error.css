@@ -1,6 +1,6 @@
 @font-face {
     font-family:'myfont';
-    src: url(/Users/d.shiba/Desktop/testcode-for-hackathon/amongus\ vector.ttf);
+    src: url(../font/amongus\ vector.ttf);
 }
 
 body{
@@ -10,13 +10,35 @@ body{
     background: #6382a2;
     text-align: center;
 }
+
+.error_message::after{
+    content:'';
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-image:  url(../img/crush.png);
+    background-repeat:no-repeat;
+    background-position:bottom;
+    background-size: contain;
+    
+}
+
 .error_message{
     font-size: 3rem;
+    font-family: 'myfont';
 }
 
 .container a{
     color: inherit;
 }
+
+.back-page{
+    width: 80px;
+    height: 30px;
+    border-radius: 30px;
+    color: black;
+}
+
 
 footer {
     margin-top: auto;

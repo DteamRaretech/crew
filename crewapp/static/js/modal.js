@@ -1,5 +1,3 @@
-'use strict';
-
 {
   const open = document.getElementById('modal-open');
   const container = document.getElementById('modal-container');
