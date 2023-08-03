@@ -36,14 +36,66 @@ class dbConnect:
             print(e + 'が発生しています')
             abort(500)
         finally:
-            cursor.close() # コネクタをクローンし全ての処理が完了
+            cursor.close() #コネクタをクローンし全ての処理が完了
 
 
     #関数：create channelsテーブル
+    def createChannels(uid, name, abstract): #チャンネル作成
+        try:
+            connection = DB.getConnection() #DBに接続する
+            cursor = connection.cursor() #mysqlからカーソル作成、sqlを実行可能にする
+            sql = "INSERT INTO channels (uid, name, abstract) VALUES (%s, %s, %s);" #カラムuid, name, abstractをINSERT
+            cursor.execute(sql, (uid, name, abstract)) #sqlを実行
+            connection.commit() #結果の確定
+        except Exception as e:
+            print(e + 'が発生しています') #コネクション関係の問題の基底クラスを指定し、例外処理
+            abort(500)
+        finally:
+            cursor.clone() #コネクタをクローンし全ての処理が完了
 
 
     #関数：read channelsテーブル
-
+    def getChannelsAll(): #チャンネルページ表示
+        try:
+            connection = DB.getConnection() #DBに接続する
+            cursor = connection.cursor() #mysqlからカーソル作成、sqlを実行可能にする
+            sql = "SELECT * FROM channels;" #テーブルchannelsのデータを全件取得
+            cursor.execute(sql) #sqlを実行
+            channels = cursor.fetchall() # 全てのデータをPython実行端末にもってくる
+            return channels
+        except Exception as e:
+            print(e + 'が発生しています') #コネクション関係の問題の基底クラスを指定し、例外処理
+            abort(500)
+        finally:
+            cursor.clone() #コネクタをクローンし全ての処理が完了
+    
+    def getChannelsName(name): #チャンネルページ編集時のチャンネル名取得
+        try:
+            connection = DB.getConnection() #DBに接続する
+            cursor = connection.cursor() #mysqlからカーソル作成、sqlを実行可能にする
+            sql = "SELECT name FROM channels WHERE name=%s;" #カラムnameを取得
+            cursor.execute(sql, (name)) #sqlを実行
+            name = cursor.fetchone() #抽出データ1件をnameに格納
+            return name
+        except Exception as e:
+            print(e + 'が発生しています') #コネクション関係の問題の基底クラスを指定し、例外処理
+            abort(500)
+        finally:
+            cursor.clone() #コネクタをクローンし全ての処理が完了
+    
+    def getChannelsId(cid)
+        try:
+            connection = DB.getConnection() #DBに接続する
+            cursor = connection.cursor() #mysqlからカーソル作成、sqlを実行可能にする
+            sql = "SELECT * FROM channels WHERE id=%s;" #idをもとにchannelsデータを取得
+            cursor.execute(sql, (cid)) #sqlを実行
+            name = cursor.fetchone() #抽出データ1件をnameに格納
+            return name
+        except Exception as e:
+            print(e + 'が発生しています') #コネクション関係の問題の基底クラスを指定し、例外処理
+            abort(500)
+        finally:
+            cursor.clone() #コネクタをクローンし全ての処理が完了
 
     #関数：update channelsテーブル
 
