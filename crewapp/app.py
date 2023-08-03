@@ -54,18 +54,55 @@ def UserSignup():
         DBuser = dbConnect.getUser(email)
 
         if DBuser != None:
-            flash('同一ユーザが登録されています')
+            flash('同一ユーザーが登録されています')
         else : #usersテーブルにINSERT
             dbConnect.createUser(uid, user_name, email, password) 
             UserID = str(uid)
             session['uid'] = UserID
-            return redirect('/')
-    return redirect('/signup')
+            return redirect('/') #成功時にホーム画面を呼び出す
+    return redirect('/signup') #ログイン失敗時、/signupにリダイレクト
 
 
 #ログイン・ログアウト処理
 
 #googleAPI連携
+
+
+#チャンネル一覧画面表示(ホーム画面)
+
+
+#チャンネル作成
+
+
+#チャンネル更新
+
+
+#チャンネル削除
+
+
+#メッセージ投稿画面表示
+
+
+#メッセージ投稿
+
+
+#メッセージ更新(サンプル＋α)
+
+
+#メッセージ削除
+
+
+#TODO一覧画面表示
+
+
+#TODO作成
+
+
+#TODO更新
+
+
+#TODO削除
+
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True)
