@@ -86,7 +86,7 @@ def userLogin():
             flash('このユーザーは登録されていません')
         else:
             hashPassword = hashlib.sha256(password.encode('utf-8')).hexdigest()
-            if hashPassword != user("password"):
+            if hashPassword != user["password"]: #[]…userオブジェクトに格納されたpasswordを呼び出す辞書の文法 ()…user関数に引数を渡すの意味
                 flash('パスワードが間違っています！')
 #ログイン成立時、sessionにuser情報を格納し、ホーム画面を呼び出す
             else:
