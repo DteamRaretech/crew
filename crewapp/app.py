@@ -65,6 +65,43 @@ def UserSignup():
 
 #ログイン・ログアウト処理
 
+# ログインページの表示
+@app.route('/login')
+def login():
+    return render_template('registation/login.html')
+
+# ログイン処理
+@app.route('/login', methods=['POST'])
+
+#フォームからログインのために入力された情報を取得
+def userLogin():
+    email = request.form.get('email')
+    password = request.form.get('password')
+#ログイン不成立のパターンが書かれている
+    if email == '' or password == '':
+        flash('空のフォームがあります')
+    else:
+        user = dbConnect.getUser(email)
+        if user is None:
+            flash('このユーザーは登録されていません')
+        else:
+            hashPassword = hashlib.sha256(password.encode('utf-8')).hexdigest()
+            if hashPassword != user("password"):
+                flash('パスワードが間違っています！')
+#ログイン成立時、sessionにuser情報を格納し、ホーム画面を呼び出す
+            else:
+                session['uid'] = user["uid"]
+                return redirect('/')
+##仮にログインに失敗した際、入力した値がフォームに残るようにしたい。
+    return redirect('/login')         
+
+# ログアウト
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect('/login')
+
+
 #googleAPI連携
 
 if __name__ == '__main__':
