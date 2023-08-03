@@ -83,7 +83,7 @@ class dbConnect:
         finally:
             cursor.clone() #コネクタをクローンし全ての処理が完了
     
-    def getChannelsId(cid)
+    def getChannelsId(cid):
         try:
             connection = DB.getConnection() #DBに接続する
             cursor = connection.cursor() #mysqlからカーソル作成、sqlを実行可能にする
