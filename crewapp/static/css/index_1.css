@@ -1,34 +1,38 @@
-.wrap{
-    width: 100%;
-    height: auto;
-    border: 0px solid black;
-}
 body {
-    height: 100%;
-    font-family:'Noto Sans JP',sans-serif;
-    background-color:#f6f5f4;
- }
- 
+   width: 100vw;
+   height: 100vh;
+   font-family:'Noto Sans JP',sans-serif;
+   /*background-color:#9ee9e6eb;*/
+   margin: 0%;
+   background-image: url(../../static/img/CREW-main.png);
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+   background-color:rgba(255,255,255,0.5);
+}
+.body-main{
+   margin: 0%;
+}
  .side {
     background-color:#EEFFFF;
-    width  : 300px;
-    height: 1000px;
+    width  : 20%;
+    height: 100%;
     text-align:center;
+    /*margin: 1px;*/
  } 
 
  .side-menu {
     list-style: none;
-    text-align: left;
+    text-align: center;
     font-size: 25px;
     line-height: 3.5;
  }
  
  .content {
-    background-color:#FFEEFF;
-    width: 1000px;
-    height:1000px;
+    /*background-color:#FFEEFF;*/
+    width: 80%;
+    height:100%;
     text-align:center;
-    margin-left:5px;/*サイドバーとメインコンテンツの間に隙間をあけた*/
+    /*margin:1px;*/
  }
  .content-menu{
     list-style: none;
@@ -37,7 +41,8 @@ body {
     line-height: 3.5;
  }
  .index{
-    font-size: 20px;
+   text-align: center;
+    font-size: 25px; 
  }
  
  article {
