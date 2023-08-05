@@ -6,7 +6,23 @@
   <link rel="stylesheet" href=""/>
 </head>
 <body>
+  <!--メッセージ表示-->
     <div class="message-area">
-        <div class=""></div>
+      <div class="">
+
+      </div>
+    </div>
+
+    <!--メッセージ入力-->
+    <div class="typing-box-wrapper">
+      <form class="typing-box" action="" method="POST" name="newMessageForm">
+        <textarea name="message" id="message" autofocus></textarea>
+        <input type="hidden" name="cid" value="{{ channel.id }}" /> <!--hiddenで目隠し＆チャンネルID-->
+        <div id="message-send-tooltip">
+          <button type="submit" id="add-message-button">
+            <ion-icon name="paper-plane"></ion-icon>
+          </button>
+      </form>
+
     </div>
 </body>
