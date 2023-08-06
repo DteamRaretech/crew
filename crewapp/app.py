@@ -91,7 +91,7 @@ def userLogin():
 #ログイン成立時、sessionにuser情報を格納し、ホーム画面を呼び出す
             else:
                 session['uid'] = user["uid"]
-                return redirect('/')
+                return render_template('registation/index.html')
 ##仮にログインに失敗した際、入力した値がフォームに残るようにしたい。
     return redirect('/login')         
 
