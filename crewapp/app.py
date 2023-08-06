@@ -123,7 +123,7 @@ def index():
 
 
 #チャンネル作成
-@app.route('/')
+@app.route('/', methods=['POST'])
 def createChannels():
 
     uid = session.get('uid')
