@@ -19,7 +19,7 @@ class dbConnect:
             print(e + 'が発生しています')
             abort(500)
         finally:
-            cursor.close() # コネクタをクローンし全ての処理が完了
+            cursor.close() # コネクタをクローズし全ての処理が完了
 
 
 
@@ -36,7 +36,7 @@ class dbConnect:
             print(e + 'が発生しています')
             abort(500)
         finally:
-            cursor.close() #コネクタをクローンし全ての処理が完了
+            cursor.close() # コネクタをクローズし全ての処理が完了
 
 
     #関数：create channelsテーブル
@@ -51,7 +51,7 @@ class dbConnect:
             print(e + 'が発生しています') #コネクション関係の問題の基底クラスを指定し、例外処理
             abort(500)
         finally:
-            cursor.clone() #コネクタをクローンし全ての処理が完了
+            cursor.close() # コネクタをクローズし全ての処理が完了
 
 
     #関数：read channelsテーブル
@@ -67,7 +67,7 @@ class dbConnect:
             print(e + 'が発生しています') #コネクション関係の問題の基底クラスを指定し、例外処理
             abort(500)
         finally:
-            cursor.clone() #コネクタをクローンし全ての処理が完了
+            cursor.close() # コネクタをクローズし全ての処理が完了
     
     def getChannelsName(name): #チャンネルページ編集時のチャンネル名取得
         try:
@@ -81,7 +81,7 @@ class dbConnect:
             print(e + 'が発生しています') #コネクション関係の問題の基底クラスを指定し、例外処理
             abort(500)
         finally:
-            cursor.clone() #コネクタをクローンし全ての処理が完了
+            cursor.close() # コネクタをクローズし全ての処理が完了
     
     def getChannelsId(id):
         try:
@@ -95,7 +95,7 @@ class dbConnect:
             print(e + 'が発生しています') #コネクション関係の問題の基底クラスを指定し、例外処理
             abort(500)
         finally:
-            cursor.clone() #コネクタをクローンし全ての処理が完了
+            cursor.close() # コネクタをクローズし全ての処理が完了
 
     #関数：update channelsテーブル
     def updateChannels(uid, name, abstract, id):
@@ -109,7 +109,7 @@ class dbConnect:
             print(e + 'が発生しています') #コネクション関係の問題の基底クラスを指定し、例外処理
             abort(500)
         finally:
-            cursor.clone() #コネクタをクローンし全ての処理が完了
+            cursor.close() # コネクタをクローズし全ての処理が完了
         
 
     #関数：delete channelsテーブル
@@ -123,7 +123,7 @@ class dbConnect:
             print(e + 'が発生しています') #コネクション関係の問題の基底クラスを指定し、例外処理
             abort(500)
         finally:
-            cursor.clone() #コネクタをクローンし全ての処理が完了
+            cursor.close() # コネクタをクローズし全ての処理が完了
 
 
     #関数：create messagesテーブル
