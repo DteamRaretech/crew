@@ -16,6 +16,12 @@ def hello_world():
     return 'Hello, World!'
 """
 
+#TODO一覧画面表示
+@app.route('/todo')
+def show_todo():
+    return render_template('registation/todolist.html')
+
+
 #サインアップページの表示
 @app.route('/signup')
 def signup():
@@ -187,7 +193,7 @@ def updateChannels(uid, name, abstract, id):
 #メッセージ削除
 
 
-#TODO一覧画面表示
+
 
 
 #TODO作成
