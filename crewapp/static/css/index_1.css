@@ -44,6 +44,18 @@ body {
    text-align: center;
     font-size: 25px; 
  }
+ .add_button img{
+   width: 50px;
+   margin-right: auto;
+ }
+ .add_button{
+   text-align: left;
+   padding: 10px;
+ }
+ input[type="image"]{
+   width: 70px;
+
+ }
  
  article {
    display:flex;/*サイドバーとメインコンテンツを横並びにする指定をした*/
