@@ -3,26 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <title>Chatroom</title>
-  <link rel="stylesheet" href=""/>
+  <link rel="stylesheet" href="../../static/css/detail.css"/>
 </head>
 <body>
-  <!--メッセージ表示-->
-    <div class="message-area">
-      <div class="">
+  <!-- toggle section -->
+  <input type="checkbox" id="check" />
+  <label for="check">
+    <i class="fas fa-bars" id="btn">&gt;</i>
+    <i class="fas fa-times" id="cancel"></i>
+  </label>
+  <!--side menu-->
+  <div class="sidebar">
+     <header><img class="sidebar-logo" src="../../static/img/CREW-logo-text.png" alt="crew logo"></header>
+     <ul>
+       <li>
+         <a href="#">HOME</a>
+       </li>
+       <li>
+         <a href="#">Task</a>
+       </li>
+       <li>
+         <a href="#">Sign Out</a>
+       </li>
+     </ul>
+  </div>
 
+  <!--main-->
+  <div class="main">
+    <!--read message-->
+      <div class="message-area">
+        <div class="my-massages">
+          <p class="raight-box">ここに自分のメッセージ</p>
+        </div>
+        <div class="crew-massages">
+          <p class="reft-box">ここにトーク相手のメッセージ</p>
+        </div>
       </div>
-    </div>
-
-    <!--メッセージ入力-->
-    <div class="typing-box-wrapper">
-      <form class="typing-box" action="" method="POST" name="newMessageForm">
-        <textarea name="message" id="message" autofocus></textarea>
-        <input type="hidden" name="cid" value="{{ channel.id }}" /> <!--hiddenで目隠し＆チャンネルID-->
-        <div id="message-send-tooltip">
-          <button type="submit" id="add-message-button">
-            <ion-icon name="paper-plane"></ion-icon>
-          </button>
-      </form>
-
-    </div>
+    <!--post message-->
+      <div class="typing-box-wrapper">
+        <form class="typing-box" action="" method="POST" name="newMessageForm">
+          <textarea name="message" id="message" autofocus></textarea>
+          <input type="hidden" name="cid" value="{{ channel.id }}" /> 
+          <div id="message-send-tooltip">
+            <button type="submit" id="add-message-button">
+              <ion-icon name="paper-plane"></ion-icon>
+            </button>
+        </form>
+      </div>
+  </div>
 </body>
