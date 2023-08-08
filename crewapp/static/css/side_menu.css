@@ -11,7 +11,7 @@
     text-decoration: none;
 }
   
-  .app {
+.app {
     position: relative;
     z-index: 1;
     width: 100vw;
@@ -23,7 +23,7 @@
     background-size: 100% 100%;
 }
 
-  .app::after{
+.app::after{
     content: "";
     position: absolute;
     z-index: 2;
@@ -35,7 +35,7 @@
     opacity: 0.5;
 }
   
-  .main {
+.main {
     position: relative;
     z-index: 3;
     display: flex;
@@ -43,7 +43,7 @@
     flex-grow: 1;
 }
   
-  .sidebar {
+.sidebar {
     background-color: rgb(255, 255, 255);
     box-sizing: border-box;
     width: 20%;
@@ -80,38 +80,60 @@ ul li:hover a {
     flex-direction: column;
     width: 100%;
 }
-  
+/*message read*/
 .flex-content {
     flex-grow: 1;
     box-sizing: border-box;
-    border: 3px solid green;
+    border: 3px solid green; /*作業完了後消す*/
 }
 
 .my-massages {
+    width: 40%;
+    padding: 10px;
+    margin: 10px 5px 5px auto;
     border: 1px solid black;
     background-color: rgba(255, 255, 255, 0.8);
 }
 
 .crew-massages {
+    width: 40%;
+    padding: 10px;
+    margin: 10px auto 5px 5px;
     border: 1px solid black;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.8);
     color: white;
 }
 
+/*message　post*/
 .fixed-content {
     height: 150px;
     box-sizing: border-box;
-    border: 3px solid darkmagenta;
+    border: 3px solid yellow;/*作業完了後消す*/
 }
 
 .fixed-content textarea {
     resize: none;
     width: 100%;
-    height: 100px;
+    height: 140px;
 }
 
 .fixed-content button {
     float: right;
     width: 50px;
     height: 20px;
+}
+
+.typing-box {
+    position: relative; /* フォームを相対位置*/
+}
+
+#add-message-button {
+    position: absolute;
+    right: 0; /* ボタンを右端に配置 */
+    bottom: 0; /* ボタンをフォームの下端に配置 */
+    margin: 10px; /* マージンを調整して余白を確保 */
+}
+
+textarea{
+    font-size: 20px;
 }
