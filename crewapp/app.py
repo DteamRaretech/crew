@@ -21,6 +21,15 @@ def hello_world():
 def show_todo():
     return render_template('registation/todolist.html')
 
+#TODO受け取り
+@app.route('/todo', methods=['POST'])
+def write_todo():
+    todo_list = []
+    todo_content = request.form.get('todo_content')
+    todo_list.append(todo_content)
+    return render_template('registation/todolist.html',todo_list = todo_list)
+
+
 
 #サインアップページの表示
 @app.route('/signup')
