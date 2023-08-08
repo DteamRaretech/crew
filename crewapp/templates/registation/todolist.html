@@ -7,13 +7,17 @@
   </head>
   <body> 
     <h1>TODO-List</h1>
-  <form>
-    <input class="task_value" type="text" />
-    <button class="task_submit" type="button">Add Task</button>
+  <form method="post">
+    <input class="task_value" type="text" name="todo_content" />
+    <input type="submit" name="" value="Add task">
   </form>
   <div id="table">
     <h2>List</h2>
     <ul class="task_list"></ul>
-  </div>
+    {% for todo in todo_list %}
+      <li>{{ todo }}</li>
+    {% endfor %}
+
+    </div>
   </body>
 </html>
