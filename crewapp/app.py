@@ -10,10 +10,16 @@ app = Flask(__name__)
 app.secret_key = uuid.uuid4().hex
 app.permanent_session_lifetime = timedelta(days=30)
 
-
+"""
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
+"""
+
+#TODO一覧画面表示
+@app.route('/todo')
+def show_todo():
+    return render_template('registation/todolist.html')
 
 
 #サインアップページの表示
@@ -106,13 +112,71 @@ def logout():
 
 
 #チャンネル一覧画面表示(ホーム画面)
+@app.route('/')
+def index():
+    uid = session.get('uid')
+    if uid is None:
+        return redirect('/login') #セッション切れの場合、再ログイン
+    else:
+        channels = dbConnect.getChannelsAll() #channels全件取得
+        channels.reverse() #リストを逆順で取り出す…リスト型メソッドのためリストオブジェクト.reverse()と記述
+    return render_template('registation/index.html', channels=channels, uid=uid) 
+    #render_template()…値を渡して動的にテンプレートの表示を変更する
+    #フロント.index.htmlの変数channelsに、バック.def index()のchannelsを渡す
+    #フロント.index.htmlの変数uidに、バック.def index()のuidを渡す
+    #フロント.constは再代入ができない変数、該当の変数は{}内の処理でのみ呼び出し可能
+    #フロント. const y = {{x|tojson}} …x:Python側から受け取った変数 y:受け取ったxをJavaScript側で置き換えた後の変数
 
 
 #チャンネル作成
+@app.route('/', methods=['POST'])
+def createChannels():
+
+    uid = session.get('uid')
+    if uid is None:
+        return redirect('/login') #セッション切れの場合、再ログイン
+    
+    # add-channelフォームから入力情報取得
+    name = request.form.get('channelTitle')
+    abstract = request.form.get('channelDescription')
+    dbChannelsName = dbConnect.getChannelsName(name) #channelTitleと一致するchannelsデータをDBから取得
+    
+    if dbChannelsName != None:
+            error_message = '同名のチャンネルが作成されています'
+            return render_template('error/error.html', error_message=error_message)
+    else:
+        dbConnect.createChannels(uid, name, abstract)
+        return redirect('/') #成功時にホーム画面を呼び出す
 
 
 #チャンネル更新
+@app.route('/update_channel', methods=['POST'])
 
+def updateChannels(uid, name, abstract, id):
+
+    # update-channelフォームから入力情報取得
+    uid = session.get('uid')
+    name = request.form.get('channelTitle')
+    abstract = request.form.get('channelDescription')
+    id = request.form.get('cid')
+
+    if uid is None:
+        return redirect('/login') #セッション切れの場合、再ログイン
+    else:
+        dbChannelsId = dbConnect.getChannelsId(id) #更新中のchannelsのidを取得
+        dbChannelsName = dbConnect.getChannelsName(name) #更新中のchannelsのnameを取得
+
+        #エラーチェック
+        if dbChannelsId['uid'] != uid:
+            flash('チャンネルは作成者のみ編集可能です')
+            return redirect ('/')
+        elif dbChannelsName['name'] != None: 
+            flash('同名のチャンネルが作成されています')
+        else:
+            dbConnect.updateChannels(uid, name, abstract, id)
+            return redirect('/detail/{cid}'.format(cid = id))
+    return redirect('/') #更新失敗時、ホーム画面にリダイレクト
+    
 
 #チャンネル削除
 
@@ -129,7 +193,7 @@ def logout():
 #メッセージ削除
 
 
-#TODO一覧画面表示
+
 
 
 #TODO作成
