@@ -123,7 +123,9 @@ def logout():
 #チャンネル一覧画面表示(ホーム画面)
 @app.route('/')
 def index():
+
     uid = session.get('uid')
+
     if uid is None:
         return redirect('/login') #セッション切れの場合、再ログイン
     else:
@@ -138,10 +140,11 @@ def index():
 
 
 #チャンネル作成
-@app.route('/', methods=['POST'])
+@app.route('/add_channel', methods=['POST'])
 def createChannels():
 
     uid = session.get('uid')
+
     if uid is None:
         return redirect('/login') #セッション切れの場合、再ログイン
     
@@ -150,7 +153,7 @@ def createChannels():
     abstract = request.form.get('channelDescription')
     dbChannelsName = dbConnect.getChannelsName(name) #channelTitleと一致するchannelsデータをDBから取得
     
-    if dbChannelsName != None:
+    if dbChannelsName != None: # add-channelフォームで入力したチャンネル名と、一致するチャンネルが既にある時
             error_message = '同名のチャンネルが作成されています'
             return render_template('error/error.html', error_message=error_message)
     else:
@@ -161,33 +164,56 @@ def createChannels():
 #チャンネル更新
 @app.route('/update_channel', methods=['POST'])
 
-def updateChannels(uid, name, abstract, id):
+def updateChannels():
 
-    # update-channelフォームから入力情報取得
     uid = session.get('uid')
+
+    if uid is None:
+        return redirect('/login') #セッション切れの場合、再ログイン
+    
+    # update-channelフォームから入力情報取得
     name = request.form.get('channelTitle')
     abstract = request.form.get('channelDescription')
     id = request.form.get('cid')
 
-    if uid is None:
-        return redirect('/login') #セッション切れの場合、再ログイン
-    else:
-        dbChannelsId = dbConnect.getChannelsId(id) #更新中のchannelsのidを取得
-        dbChannelsName = dbConnect.getChannelsName(name) #更新中のchannelsのnameを取得
+    #更新中のchannelsのnameを基準に、DBデータを取得
+    dbChannelsName = dbConnect.getChannelsName(name) 
 
-        #エラーチェック
-        if dbChannelsId['uid'] != uid:
-            flash('チャンネルは作成者のみ編集可能です')
-            return redirect ('/')
-        elif dbChannelsName['name'] != None: 
-            flash('同名のチャンネルが作成されています')
-        else:
-            dbConnect.updateChannels(uid, name, abstract, id)
-            return redirect('/detail/{cid}'.format(cid = id))
-    return redirect('/') #更新失敗時、ホーム画面にリダイレクト
+    #エラーチェック
+    if dbChannelsName['uid'] != uid: #channels作成者≠ログインユーザの時
+        error_message = 'チャンネルは作成者のみ編集可能です'
+        return render_template('error/error.html', error_message=error_message)
+    elif dbChannelsName['name'] != None:  # update-channelフォームで入力したチャンネル名と、一致するチャンネルが既にある時
+        error_message = '同名のチャンネルが作成されています'
+        return render_template('error/error.html', error_message=error_message)
+    else:
+        dbConnect.updateChannels(uid, name, abstract, id)
+        return redirect('/detail/{cid}'.format(cid = id))
     
 
 #チャンネル削除
+@app.route('/delete/<cid>')
+
+def deleteChannels():
+
+    uid = session.get('uid')
+
+    if uid is None:
+        return redirect('/login') #セッション切れの場合、再ログイン
+
+    # delete-channelフォームから削除対象チャンネル取得
+    id = request.form.get('cid')
+
+    #削除対象のchannelsのidを基準に、DBデータを取得
+    dbChannelsId = dbConnect.getChannelsId(id)
+
+    #エラーチェック
+    if dbChannelsId['uid'] != uid: #channels作成者≠ログインユーザの時
+        error_message = 'チャンネルは作成者のみ削除可能です'
+        return render_template('error/error.html', error_message=error_message)
+    else:
+        dbConnect.deleteChannels(id)
+        index() #チャンネル削除後、チャンネル一覧画面表示(ホーム画面)
 
 
 #メッセージ投稿画面表示
