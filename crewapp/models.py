@@ -127,15 +127,51 @@ class dbConnect:
 
 
     #関数：create messagesテーブル
+    def createMessages(uid, cid, message):
+        try:
+            connection = DB.getConnection()
+            cursor = connection.cursor()
+            sql = "INSERT INTO messages(uid, cid, messege) VALUES(%s, %s, %s)"
+            cursor.execute(sql, (uid, cid, message))
+            connection.commit()
+        except Exception as e:
+            print(e + 'が発生しています')
+            abort(500)
+        finally:
+            cursor.close()
 
 
     #関数：read messagesテーブル
-
+    def getMessageALL(cid):
+        try:
+            connection = DB.getConnection()
+            cursor = connection.cursor()
+            sql = "SELECT id, u.uid, user_name, message FROM messages INNER JOIN users ON messages.uid = users.uid WHERE cid = %s;"
+            cursor.execute(sql, (cid))
+            messages = cursor.fetchall()
+            return messages
+        except Exception as e:
+            ptint(e + 'が発生しています')
+            abort(500)
+        finally:
+            cursor.close()
 
     #関数：update messagesテーブル
 
 
     #関数：delete messagesテーブル
+    def deleteMessage(message_id):
+        try:
+            connection = DB.getConnection()
+            cursor = connection.cursor()
+            sql = "DELETE FROM messages WHERE id = %s;"
+            cursor.execute(sql, (message_id))
+            connection.commit()
+        except Exception as e:
+            ptint(e + 'が発生しています')
+            abort(500)
+        finally:
+            cursor.close()
 
 
     #関数：create todoテーブル

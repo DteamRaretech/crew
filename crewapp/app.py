@@ -217,15 +217,54 @@ def deleteChannels():
 
 
 #メッセージ投稿画面表示
+@app.route('/detail/<cid>')
+def detail(cid):
+    
+    uid = session.get("uid")    
+    if uid is None:
+        return redirect('/login')
 
+    cid = cid   
+    channel = dbConnect,getChannelsId(cid)
+    messages = dbConnect.getMessageALL(cid)
 
+    return render_template('detail.html', messages=messages, channel=channel, uid=uid)
+        
 #メッセージ投稿
+@app.route('/message', methods=['POST'])
+def add_message():
+
+    uid = session.get("uid")
+    if uid is None:
+        return redirect('/login')
+    
+    message = request.form.get('message')
+    cid = request.form.get('cid')
+
+    if message:
+        dbConnect.createMessage(uid,cid,message)
+
+    return redirect('/detail/{cid}'.format(cid = cid))
 
 
 #メッセージ更新(サンプル＋α)
 
 
 #メッセージ削除
+@app.route('/delete_message', methods=['POST'])
+def delete_message():
+
+    uid = session.get("uid")
+    if uid is None:
+        return redirect('/login')
+    
+    message_id = request.form.get('message_id')
+    cid = request.form.get('cid')
+
+    if message_id:
+        dbConnect.deleteMessage(message_id)
+
+    return redirect('/delete/{cid}'.format(cid = cid)) 
 
 
 
