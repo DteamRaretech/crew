@@ -26,17 +26,23 @@
               </ul>
         </div>
         <div class="content">
+          <div class="content-header">
+              <p>room name</p>
+              <img src="../../static/img/edit.png">
+          </div>
           <div class="flex-content">
             <div class="my-massages">
                 <p class="right-box">ここに自分のメッセージ</p>
             </div>
             <div class="crew-massages">
-                <p class="left-box">ここにトーク相手のメッセージ</p>
+              <p><span class="crew-name">user name</span></p>
+              <p class="left-box">ここにトーク相手のメッセージ</p>
             </div>
             <div class="my-massages">
               <p class="right-box">ここに自分のメッセージ</p>
             </div>
             <div class="crew-massages">
+              <p><span class="crew-name">user name</span></p>
               <p class="left-box">ここにトーク相手のメッセージ</p>
             </div>
             <div class="my-massages">
@@ -49,7 +55,7 @@
                     <input type="hidden" name="cid" value="{{ channel.id }}" /> 
                 <div id="message-send-tooltip">
                     <button type="submit" id="add-message-button">
-                        submit
+                        <img src="../../static/img/send-rocket.png">
                     </button>
                 </div>
             </form>
