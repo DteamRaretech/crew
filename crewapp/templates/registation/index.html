@@ -4,9 +4,17 @@
     <title>チャットアプリ</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../static/css/sample.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
   </head>
   <body>
+    <!--toggle section-->
+      <input type="checkbox" id="check">
+      <label for="check">
+        <i class="fas fa-bars" id="hamburger"></i>
+        <i class="fas fa-times" id="cancel"></i>
+      </label>
     <div class="body">
+      
       <div class="sidebar">
        <header><img src="../../static/img/CREW-logo-text.png" alt="CREW"></header>
        <ul>
@@ -48,10 +56,35 @@
           <a href="#">ROOM_6</a>
         </div>
       </div>
-      <div class="add_button">
-      <a href="#"><img src="../../static/img/add_button.png" alt="追加"></a>
-      </div>
+    <!--<div class="pagination">
+      <button class="btn1">prev</button>
+      <ul class="page">
+        <li class="link" value="1"><a href="#">1</a></li>
+        <li class="link" value="2"><a href="#">2</a></li>
+        <li class="link" value="3"><a href="#">3</a></li>
+      </ul>
+      <button class="btn2">next</button>
+    </div>-->
+    <div id="channels-list">
+      <div id="pagination-wrapper">
+        <div>
+          <div class="pagination-container">
+            <p id="prev">
+              <
+              <span>PREV</span>
+            </p>
+            <ul class="pagination"></ul>
+            <p id="next">
+              <span>NEXT</span>
+              >
+            </p>  
+          </div>
+        </div>
       </div>
     </div>
+    <div class="add_button">
+      <a href="#"><img src="../../static/img/add_button.png" alt="追加"></a>
+      </div> 
+      </div>
   </body>
 </html>
