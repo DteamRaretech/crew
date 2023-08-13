@@ -2,47 +2,66 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Chatroom</title>
-  <link rel="stylesheet" href="../../static/css/detail.css"/>
+  <title>ChatTEST</title>
+  <link rel="stylesheet" href="../../static/css/side_menu.css"/>
 </head>
-<body>
-  <!--side menu-->
-  <div class="sidebar">
-     <header><img class="sidebar-logo" src="../../static/img/CREW-logo-text.png" alt="crew logo"></header>
-     <ul>
-       <li>
-         <a href="#">HOME</a>
-       </li>
-       <li>
-         <a href="#">Task</a>
-       </li>
-       <li>
-         <a href="#">Sign Out</a>
-       </li>
-     </ul>
-  </div>
 
-  <!--main-->
-  <div class="main">
-    <!--read message-->
-      <div class="message-area">
-        <div class="my-massages">
-          <p class="raight-box">ここに自分のメッセージ</p>
+<body>
+    <div class="app"> <!--ページ全体-->
+      <div class="main">
+        <div class="sidebar">
+            <header>
+                <img class="sidebar-logo" src="../../static/img/CREW-logo2.png" alt="crew logo">
+            </header>
+            <ul>
+                <li>
+                  <a href="#">HOME</a>
+                </li>
+                <li>
+                  <a href="#">Task</a>
+                </li>
+                <li>
+                  <a href="#">Sign Out</a>
+                </li>
+              </ul>
         </div>
-        <div class="crew-massages">
-          <p class="reft-box">ここにトーク相手のメッセージ</p>
+        <div class="content">
+            <div class="content-header">
+                <p>room name</p>
+                <img src="../../static/img/edit.png">
+            </div>
+          <div class="flex-content">
+            <div class="my-massages">
+                <p class="right-box">ここに自分のメッセージ</p>
+            </div>
+            <div class="crew-massages">
+              <p><span class="crew-name">user name</span></p>
+              <p class="left-box">ここにトーク相手のメッセージ</p>
+            </div>
+            <div class="my-massages">
+              <p class="right-box">ここに自分のメッセージ</p>
+            </div>
+            <div class="crew-massages">
+              <p><span class="crew-name">user name</span></p>
+              <p class="left-box">ここにトーク相手のメッセージ</p>
+            </div>
+            <div class="my-massages">
+              <p class="right-box">ここに自分のメッセージ</p>
+            </div>
+          </div>
+          <div class="fixed-content">
+            <form class="typing-box" action="" method="POST" name="newMessageForm">
+                <textarea name="message" id="message" autofocus></textarea>
+                    <input type="hidden" name="cid" value="{{ channel.id }}" /> 
+                <div id="message-send-tooltip">
+                    <button type="submit" id="add-message-button">
+                        <img src="../../static/img/send-rocket.png">
+                    </button>
+                </div>
+            </form>
+          </div>
         </div>
       </div>
-    <!--post message-->
-      <div class="typing-box-wrapper">
-        <form class="typing-box" action="" method="POST" name="newMessageForm">
-          <textarea name="message" id="message" autofocus></textarea>
-          <input type="hidden" name="cid" value="{{ channel.id }}" /> 
-          <div id="message-send-tooltip">
-            <button type="submit" id="add-message-button">
-              <ion-icon name="paper-plane"></ion-icon>
-            </button>
-        </form>
-      </div>
-  </div>
-</body>
+    </div>
+  </body>
+</html>
