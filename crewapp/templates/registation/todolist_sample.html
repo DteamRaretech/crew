@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head >
+    <title>チャットアプリ</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../static/css/todorist_sample.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+  </head>
+  <body>
+    <div class="app">
+        <div class="main">
+            <div class="sidebar">
+                <header>
+                    <img class="sidebar-logo" src="../../static/img/CREW-logo2.png" alt="crew logo">
+                </header>
+                <ul>
+                    <li>
+                      <a href="#"><img src="../../static/img/CREW-side-logo.png">HOME</a>
+                    </li>
+                    <li>
+                      <a href="#"><img src="../../static/img/CREW-side-logo2.png">Task</a>
+                    </li>
+                    <li>
+                      <a href="#"><img src="../../static/img/CREW-side-logo3.png">Sign Out</a>
+                    </li>
+                  </ul>
+            </div>
+            <div class="content">
+            <div class="content-header">
+                <p>TO DO List</p>
+                <img src="../../static/img/edit.png">
+            </div>
+            <h1>TODO-List</h1>
+            <form>
+                <input class="task_value" type="text" />
+                <button class="task_submit" type="button">追加</button>
+            </form>
+            <div id="table">
+                <h2>List</h2>
+                <ul class="task_list"></ul>
+            </div>
+        </div>
+    </div>
+  </body>
