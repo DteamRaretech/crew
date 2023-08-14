@@ -30,25 +30,23 @@
                 <p>room name</p>
                 <img src="../../static/img/edit.png">
             </div>
+             <!--read message-->
           <div class="flex-content">
+            {% if messages|length > 0 %} {% for message in messages %} {% if
+              message.uid == uid %}
             <div class="my-massages">
-                <p class="right-box">ここに自分のメッセージ</p>
+                <p class="right-box">{{ message.message }}</p>
             </div>
+            {% else %}
             <div class="crew-massages">
-              <p><span class="crew-name">user name</span></p>
-              <p class="left-box">ここにトーク相手のメッセージ</p>
+              <p><span class="crew-name">{{ message.user_name }}</span></p>
+              <p class="left-box">{{ message.message }}</p>
             </div>
-            <div class="my-massages">
-              <p class="right-box">ここに自分のメッセージ</p>
-            </div>
-            <div class="crew-massages">
-              <p><span class="crew-name">user name</span></p>
-              <p class="left-box">ここにトーク相手のメッセージ</p>
-            </div>
-            <div class="my-massages">
-              <p class="right-box">ここに自分のメッセージ</p>
-            </div>
+            {% endif %} {% endfor %} {% else %}
+            <div id="no-message"><p>メッセージがありません</p></div>
+            {% endif %}
           </div>
+          <!--post message box-->
           <div class="fixed-content">
             <form class="typing-box" action="" method="POST" name="newMessageForm">
                 <textarea name="message" id="message" autofocus></textarea>
