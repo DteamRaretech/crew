@@ -9,6 +9,14 @@ body{
     background: #6382a2;
 }
 
+.modal-add-channel{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+/*
 #modal-open,
 #modal-close{
     width: 320px;
@@ -43,13 +51,12 @@ body{
     transform: translateX(-50%);
     background-color: #fff;
     padding: 20px;
-    opacity: 0; /*透明にする*/
-    pointer-events: none; /*opacityで透明にしてリンクも無効*/
+    opacity: 0;
+    pointer-events: none;
 }
 
 #modal-container.active {
-    /*このclassはHTMLには記述がなく、JSでactiveを付与する*/
     opacity: 1;
     pointer-events: auto;
-    /**/
 }
+*/
