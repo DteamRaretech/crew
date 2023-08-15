@@ -3,17 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Add Room</title>
-  <link rel="stylesheet" href=""/>
+  <link rel="stylesheet" href="../../static/css/modal.css"/>
 </head>
 <body>
     <div class="modal-add-channel">
-        <div class="modal-add-channel-header">
+        <div class="add-channel-header">
             <h5>Add Room</h5>
-            <span>&#9746;</span>
         </div>
         <div class="modal-add-channel-container">
-            <form>
-                <input
+            <form name="addChannelForm" class="modal-body" action="/" method="POST">
+              <input
                 type="text"
                 placeholder="Channel name"
                 class="channel-form-input"
@@ -25,7 +24,7 @@
                 class="channel-form-input"
                 name="channelDescription"
               />
-              <button id="add-channel-confirmation-button">Set Up</button>
+              <button id="add-channel-confirmation-button">Set</button>
             </form>
         </div>
     </div>

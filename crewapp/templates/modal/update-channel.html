@@ -2,15 +2,34 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Update Room</title>
-  <link rel="stylesheet" href=""/>
+  <title>Edit Room</title>
+  <link rel="stylesheet" href="../../static/css/modal.css"/>
 </head>
 <body>
-  <div class="modal-update-channel">
-    <div class="modal-update-channnel-header">
-      <h5>Update</h5>
-      <span>&#9746;</span>
+  <div class="modal-channel">
+    <div class="modal-channel-header">
+      <h5>Update Room</h5>
     </div>
+    <div class="modal-channel-container"></div>
+      <form
+      name="updateChannelForm"
+      class="modal-body"
+      action="/update_channel"
+      method="POST"
+      >
+      <input
+        type="text"
+        placeholder="Channel name"
+        class="channel-form-input"
+        name="channelTitle"
+      />
+      <input
+        type="text"
+        placeholder="Channel description"
+        class="channel-form-input"
+        name="channelDescription"
+      />
+      </form>
   </div>
   <script src=""></script>
 </body>
