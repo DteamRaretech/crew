@@ -138,21 +138,30 @@ def index():
     #フロント.constは再代入ができない変数、該当の変数は{}内の処理でのみ呼び出し可能
     #フロント. const y = {{x|tojson}} …x:Python側から受け取った変数 y:受け取ったxをJavaScript側で置き換えた後の変数
 
+"""
+#チャンネル作成フォーム表示 , methods=['POST']
+@app.route('/addchannel')
+def add_channel():
+    return render_template('modal/add-channel.html')
+"""
 
-#チャンネル作成
-@app.route('/add_channel', methods=['POST'])
+#チャンネル作成 
+@app.route('/addchannel', methods=['POST','GET'])
 def createChannels():
 
     uid = session.get('uid')
 
     if uid is None:
         return redirect('/login') #セッション切れの場合、再ログイン
-    
+    if request.method == 'GET':
+        return render_template('modal/add-channel.html')
+
+
     # add-channelフォームから入力情報取得
     name = request.form.get('channelTitle')
     abstract = request.form.get('channelDescription')
     dbChannelsName = dbConnect.getChannelsName(name) #channelTitleと一致するchannelsデータをDBから取得
-    
+
     if dbChannelsName != None: # add-channelフォームで入力したチャンネル名と、一致するチャンネルが既にある時
             error_message = '同名のチャンネルが作成されています'
             return render_template('error/error.html', error_message=error_message)
