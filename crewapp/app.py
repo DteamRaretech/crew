@@ -40,7 +40,6 @@ def signup():
 #サインアップ処理
 
 @app.route('/signup' , methods=['POST'])
-
 def UserSignup():
     
     #フォームからサインアップ情報を取得
@@ -146,6 +145,8 @@ def add_channel():
 """
 
 #チャンネル作成 
+#POST(Webサーバに送る値を見えないところにくっつけて送るやり方、「このデータをやるから追加して」のお願い)
+#GET(Webサーバに送る値をURLにくっつけて送るやり方、「このページをくれ」のお願い) 両方を許可
 @app.route('/addchannel', methods=['POST','GET'])
 def createChannels():
 
@@ -154,7 +155,7 @@ def createChannels():
     if uid is None:
         return redirect('/login') #セッション切れの場合、再ログイン
     if request.method == 'GET':
-        return render_template('modal/add-channel.html')
+        return render_template('modal/add-channel.html') #GETメソッドの場合、add-channel.html表示
 
 
     # add-channelフォームから入力情報取得
@@ -171,14 +172,17 @@ def createChannels():
 
 
 #チャンネル更新
-@app.route('/update_channel', methods=['POST'])
-
+#POST(Webサーバに送る値を見えないところにくっつけて送るやり方、「このデータをやるから追加して」のお願い)
+#GET(Webサーバに送る値をURLにくっつけて送るやり方、「このページをくれ」のお願い) 両方を許可
+@app.route('/updatechannel', methods=['POST','GET'])
 def updateChannels():
 
     uid = session.get('uid')
 
     if uid is None:
         return redirect('/login') #セッション切れの場合、再ログイン
+    if request.method == 'GET':
+        return render_template('modal/update-channel.html') #GETメソッドの場合、update-channel.html表示
     
     # update-channelフォームから入力情報取得
     name = request.form.get('channelTitle')
@@ -202,7 +206,6 @@ def updateChannels():
 
 #チャンネル削除
 @app.route('/delete/<cid>')
-
 def deleteChannels():
 
     uid = session.get('uid')
@@ -234,7 +237,7 @@ def detail(cid):
         return redirect('/login')
 
     cid = cid   
-    channel = dbConnect,getChannelsId(cid)
+    channel = dbConnect.getChannelsId(cid)
     messages = dbConnect.getMessageALL(cid)
 
     return render_template('detail.html', messages=messages, channel=channel, uid=uid)
