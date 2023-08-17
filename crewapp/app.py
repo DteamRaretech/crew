@@ -204,9 +204,9 @@ def updateChannels():
         return redirect('/detail/{cid}'.format(cid = id))
     
 
-#チャンネル削除
-@app.route('/delete/<cid>')
-def deleteChannels():
+#チャンネル削除 URLの部分に<>で囲む変数を表記することで、ユーザーから引数をもらうことができる。
+@app.route('/delete/<cid>') #フロントから送られてきたURLの<cid>部分を引数として使う
+def deleteChannels(cid): #URLの<cid>をdeleteChannels関数に引数として渡す
 
     uid = session.get('uid')
 
@@ -214,7 +214,7 @@ def deleteChannels():
         return redirect('/login') #セッション切れの場合、再ログイン
 
     # delete-channelフォームから削除対象チャンネル取得
-    id = request.form.get('cid')
+    id = cid 
 
     #削除対象のchannelsのidを基準に、DBデータを取得
     dbChannelsId = dbConnect.getChannelsId(id)
@@ -225,13 +225,13 @@ def deleteChannels():
         return render_template('error/error.html', error_message=error_message)
     else:
         dbConnect.deleteChannels(id)
-        index() #チャンネル削除後、チャンネル一覧画面表示(ホーム画面)
+        return redirect('/')
 
 
 #メッセージ投稿画面表示
 @app.route('/detail/<cid>')
 def detail(cid):
-    
+    print(cid)
     uid = session.get("uid")    
     if uid is None:
         return redirect('/login')

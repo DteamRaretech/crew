@@ -119,6 +119,7 @@ class dbConnect:
             cursor = connection.cursor() #mysqlからカーソル作成、sqlを実行可能にする
             sql = "DELETE FROM channels WHERE id=%s;" #idをもとにchannelsデータを削除
             cursor.execute(sql, (id)) #sqlを実行
+            connection.commit()
         except Exception as e:
             print(e + 'が発生しています') #コネクション関係の問題の基底クラスを指定し、例外処理
             abort(500)
@@ -151,7 +152,7 @@ class dbConnect:
             messages = cursor.fetchall()
             return messages
         except Exception as e:
-            ptint(e + 'が発生しています')
+            print(e + 'が発生しています')
             abort(500)
         finally:
             cursor.close()
