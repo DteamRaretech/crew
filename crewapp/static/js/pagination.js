@@ -6,7 +6,7 @@ const deleteChannelModal = document.getElementById("delete-channel-modal");
 // paginationでチャンネル一覧を追加した後、「チャンネル登録ボタン」を追加
 // ボタンを追加した後に「loadAddChannelButton関数（add-channel.js内）」を呼び出したい。
 // なのでここのpagination関数はasyncにしている。
-const pagination = async () => {
+const pagination = () => {
   let page = 1; // 今何ページ目にいるか
   const STEP = 6; // ステップ数（1ページに表示する項目数）
 
@@ -59,19 +59,13 @@ const pagination = async () => {
       if (uid === channel.uid) {
         const deleteButton = document.createElement("button");
         deleteButton.innerHTML =
-          '<ion-icon name="trash-bin-outline" style="color: #f57978"></ion-icon>';
+          `<a href='/delete/${channel.id}'><img src="../../static/img/CREW-logo-delete.png"></a>`
         deleteButton.classList.add("delete-button");
         li.appendChild(deleteButton);
         // ゴミ箱ボタンが押された時にdeleteモーダルを表示させる
-        deleteButton.addEventListener("click", () => {
-          deleteChannelModal.style.display = "flex";
-          const confirmationButtonLink = document.getElementById(
-            "delete-confirmation-link"
-          );
+
           // aタグにhrefを追加
-          const channelURL = `/delete/${channel.id}`;
-          confirmationButtonLink.setAttribute("href", channelURL);
-        });
+          //const channelURL = `/delete/${channel.id}`;
       }
 
       // もしチャンネルに説明文が登録されていたら吹き出しを作成（hover時に表示される）
@@ -132,5 +126,5 @@ const pagination = async () => {
 // 画面がロードされる時の処理
 window.onload = () => {
   // pagination関数（asyncが完了したらチャンネル追加ボタンを読み込む）
-  pagination().then(loadAddChannelButton);
+  pagination();
 };
