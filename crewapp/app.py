@@ -174,29 +174,32 @@ def createChannels():
 #チャンネル更新
 #POST(Webサーバに送る値を見えないところにくっつけて送るやり方、「このデータをやるから追加して」のお願い)
 #GET(Webサーバに送る値をURLにくっつけて送るやり方、「このページをくれ」のお願い) 両方を許可
-@app.route('/updatechannel', methods=['POST','GET'])
-def updateChannels():
+
+
+@app.route('/updatechannel/<cid>', methods=['POST','GET'])
+def updateChannels(cid):
 
     uid = session.get('uid')
 
     if uid is None:
         return redirect('/login') #セッション切れの場合、再ログイン
     if request.method == 'GET':
-        return render_template('modal/update-channel.html') #GETメソッドの場合、update-channel.html表示
-    
+        return render_template('modal/update-channel.html', cid = cid) #GETメソッドの場合、update-channel.html表示
+
     # update-channelフォームから入力情報取得
     name = request.form.get('channelTitle')
     abstract = request.form.get('channelDescription')
     id = request.form.get('cid')
 
     #更新中のchannelsのnameを基準に、DBデータを取得
+    dbChannelsId = dbConnect.getChannelsId(id)
     dbChannelsName = dbConnect.getChannelsName(name) 
 
     #エラーチェック
-    if dbChannelsName['uid'] != uid: #channels作成者≠ログインユーザの時
+    if dbChannelsId['uid'] != uid: #channels作成者≠ログインユーザの時        
         error_message = 'チャンネルは作成者のみ編集可能です'
         return render_template('error/error.html', error_message=error_message)
-    elif dbChannelsName['name'] != None:  # update-channelフォームで入力したチャンネル名と、一致するチャンネルが既にある時
+    elif dbChannelsName != None:  # update-channelフォームで入力したチャンネル名と、一致するチャンネルが既にある時
         error_message = '同名のチャンネルが作成されています'
         return render_template('error/error.html', error_message=error_message)
     else:
@@ -240,7 +243,7 @@ def detail(cid):
     channel = dbConnect.getChannelsId(cid)
     messages = dbConnect.getMessageALL(cid)
 
-    return render_template('detail.html', messages=messages, channel=channel, uid=uid)
+    return render_template('registation/detail.html', messages=messages, channel=channel, uid=uid)
         
 #メッセージ投稿
 @app.route('/message', methods=['POST'])
