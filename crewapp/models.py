@@ -132,7 +132,7 @@ class dbConnect:
         try:
             connection = DB.getConnection()
             cursor = connection.cursor()
-            sql = "INSERT INTO messages(uid, cid, messege) VALUES(%s, %s, %s)"
+            sql = "INSERT INTO messages(uid, cid, message) VALUES(%s, %s, %s)"
             cursor.execute(sql, (uid, cid, message))
             connection.commit()
         except Exception as e:

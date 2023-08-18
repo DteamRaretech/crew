@@ -114,7 +114,7 @@ def userLogin():
 #ログイン成立時、sessionにuser情報を格納し、ホーム画面を呼び出す
             else:
                 session['uid'] = user["uid"]
-                return render_template('registation/index.html')
+                return redirect('/')
 ##仮にログインに失敗した際、入力した値がフォームに残るようにしたい。
     return redirect('/login')         
 
@@ -264,9 +264,12 @@ def add_message():
     
     message = request.form.get('message')
     cid = request.form.get('cid')
+    print(uid)
+    print(message)
+    print(cid)
 
     if message:
-        dbConnect.createMessage(uid,cid,message)
+        dbConnect.createMessages(uid,cid,message)
 
     return redirect('/detail/{cid}'.format(cid = cid))
 
