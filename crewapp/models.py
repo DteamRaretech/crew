@@ -139,7 +139,18 @@ class dbConnect:
 
 
     #関数：create todoテーブル
-
+    def createTodo(uid,title,detail,fixed_date,completion): #サインアップ処理
+        try: 
+            connection = DB.getConnection() #DBに接続する
+            cursor = connection.cursor() #mysqlからカーソル作成、sqlを実行可能にする
+            sql = "INSERT INTO todo (uid,title,detail,fixed_date,completion) VALUES (%s,%s,%s,%s,%s);"
+            cursor.execute(sql, (uid,title,detail,fixed_date,completion)) #SQLを実行
+            connection.commit() #結果の確定
+        except Exception as e: #コネクション関係の問題の基底クラスを指定し、例外処理
+            print(e + 'が発生しています')
+            abort(500)
+        finally:
+            cursor.close() # コネクタをクローズし全ての処理が完了
 
     #関数：read todoテーブル
 
