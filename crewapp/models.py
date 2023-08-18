@@ -73,10 +73,10 @@ class dbConnect:
         try:
             connection = DB.getConnection() #DBに接続する
             cursor = connection.cursor() #mysqlからカーソル作成、sqlを実行可能にする
-            sql = "SELECT name FROM channels WHERE name=%s;" #カラムnameを取得
+            sql = "SELECT * FROM channels WHERE name=%s;" #カラムnameを取得
             cursor.execute(sql, (name)) #sqlを実行
-            name = cursor.fetchone() #抽出データ1件をnameに格納
-            return name
+            channel = cursor.fetchone() #抽出データ1件をnameに格納
+            return channel
         except Exception as e:
             print(e + 'が発生しています') #コネクション関係の問題の基底クラスを指定し、例外処理
             abort(500)
@@ -147,7 +147,7 @@ class dbConnect:
         try:
             connection = DB.getConnection()
             cursor = connection.cursor()
-            sql = "SELECT id, u.uid, user_name, message FROM messages INNER JOIN users ON messages.uid = users.uid WHERE cid = %s;"
+            sql = "SELECT id,u.uid, user_name, message FROM messages AS m INNER JOIN users AS u ON m.uid = u.uid WHERE cid = %s;"
             cursor.execute(sql, (cid))
             messages = cursor.fetchall()
             return messages
