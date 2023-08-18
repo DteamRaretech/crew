@@ -19,7 +19,7 @@ def hello_world():
 #TODO一覧画面表示
 @app.route('/todo')
 def show_todo():
-    return render_template('registation/todolist.html')
+    return render_template('registation/todolist_sample.html')
 
 #TODO受け取り
 @app.route('/todo', methods=['POST'])
