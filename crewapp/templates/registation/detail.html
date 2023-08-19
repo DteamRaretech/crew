@@ -14,21 +14,21 @@
                 <img class="sidebar-logo" src="../../static/img/CREW-logo2.png" alt="crew logo">
             </header>
             <ul>
-                <li>
-                  <a href="#">HOME</a>
-                </li>
-                <li>
-                  <a href="#">Task</a>
-                </li>
-                <li>
-                  <a href="#">Sign Out</a>
-                </li>
+              <li>
+                <a href="/"><img src="../../static/img/CREW-side-logo.png">HOME</a>
+              </li>
+              <li> 
+                <a href="/todo"><img src="../../static/img/CREW-side-logo2.png">Task</a>
+              </li>
+              <li>
+                <a href="/login"><img src="../../static/img/CREW-side-logo3.png">Sign Out</a>
+              </li>
               </ul>
         </div>
         <div class="content">
             <div class="content-header">
                 <p>{{ channel.name }}</p>
-                <img src="../../static/img/edit.png">
+                <a href="updatechannel/{cid}"><img src="../../static/img/edit.png"></a>
             </div>
              <!--read message-->
           <div class="flex-content">

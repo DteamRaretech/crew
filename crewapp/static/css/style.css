@@ -81,11 +81,19 @@ body{
 .swich-form{
     font-size: 1rem;
     text-align: center;
-    }
+}
+
+a{
+    text-decoration: none;
+}
 
 .swich-form:hover,a:visited{
-        color: inherit;
-    }
+    color: inherit;
+}
+
+li{
+    list-style: none;
+}
 
 footer {
     margin-top: auto;

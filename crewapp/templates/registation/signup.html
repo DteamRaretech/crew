@@ -15,7 +15,7 @@
                     <input type="password" name="password2" placeholder="Password Confirmation">
 
                     <input type="submit" name="" value="Signup">
-                        <!-- flashメッセージ用
+                        <!-- flash message-->
                         <div class="registration-button-container">
                             {% with messages = get_flashed_messages() %} {% if messages %}
                             <ul class="flashes">
@@ -25,7 +25,6 @@
                             </ul>
                                 {% endif %} {% endwith %}
                         </div>
-                        -->
                 <a class="switch-form" href={{ url_for('login') }}>ログイン</a>
             </form>
 
