@@ -243,7 +243,7 @@ def deleteChannels(cid): #URLの<cid>をdeleteChannels関数に引数として�
 #メッセージ投稿画面表示
 @app.route('/detail/<cid>')
 def detail(cid):
-    print(cid)
+
     uid = session.get("uid")    
     if uid is None:
         return redirect('/login')
@@ -264,9 +264,6 @@ def add_message():
     
     message = request.form.get('message')
     cid = request.form.get('cid')
-    print(uid)
-    print(message)
-    print(cid)
 
     if message:
         dbConnect.createMessages(uid,cid,message)
