@@ -150,7 +150,7 @@ ul li:hover a {
 }
 
 .typing-box {
-    position: relative; /* フォームを相対位置*/
+    position: relative;
 }
 
 .fixed-content textarea {
@@ -159,6 +159,7 @@ ul li:hover a {
     height: 140px;
     border-radius: 5px;
     margin-left: 10px;
+    padding: 10px;
     opacity: 0.7;
 }
 
