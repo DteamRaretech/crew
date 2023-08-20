@@ -33,7 +33,7 @@ CREATE TABLE todo (
     id serial PRIMARY KEY,
     uid varchar(255) REFERENCES users(uid),
     title text,
-    detail text,
+    detail text,    
     fixed_date date,
     completion boolean
 
