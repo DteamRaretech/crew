@@ -112,29 +112,42 @@ li{
 
 h1 {
     font-size:2.5rem;
-    padding-top: 50px;
-    margin-left: 320px;
+    padding-top: 10px;
+    margin-left: 265px;
 }
 
-.task_value {
-    height: 1.8rem;
+.task_value{
+    height: 1.9rem;
     width: 25rem;
     margin-top: 5px;
-    margin-left: 314px;
+}
+.message{
+    height: 2.5rem;
+    width: 25rem;
+    margin-top: 2px;
+}
+.target{
+    height: 2.5rem;
+    width: 10rem;
+    margin-top: 2px;
 }
   
 .task_submit {
     height: 2rem;
     width: 2rem;
+    margin-top: 2px;    
+}
+.item{
+    margin-left: 265px;
 }
   
 #table {
     background-color: #e0ffff;
-    width: 50%;
+    width: 60%;
     height: 450px;
     border-radius: 1rem;
-    margin-left: 310px;
-    margin-top: 15px;
+    margin-left: 260px;
+    margin-top: 5px;
     text-align: center
 }
   
