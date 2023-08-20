@@ -49,7 +49,7 @@
           <!--post message box-->
           <div class="fixed-content">
             <form class="typing-box" action="/message" method="POST" name="newMessageForm">
-                <textarea name="message" id="message" autofocus></textarea>
+                <textarea name="message" id="message" autofocus placeholder="Pls enter msg"></textarea>
                     <input type="hidden" name="cid" value="{{ channel.id }}" /> 
                 <div id="message-send-tooltip">
                     <button type="submit" id="add-message-button">
