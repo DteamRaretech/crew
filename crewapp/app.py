@@ -10,11 +10,6 @@ app = Flask(__name__)
 app.secret_key = uuid.uuid4().hex
 app.permanent_session_lifetime = timedelta(days=30)
 
-"""
-@app.route('/')
-def hello_world():
-    return 'Hello, World!'
-"""
 
 #TODO一覧画面表示
 @app.route('/todo')
@@ -57,9 +52,6 @@ def UserSignup():
     password1 = request.form.get('password1')
     password2 = request.form.get('password2')
 
-    """
-    print(user_name, email, password1, password2)
-    """
     
     #email正規表現
     regex = '^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
@@ -146,12 +138,6 @@ def index():
     #フロント.constは再代入ができない変数、該当の変数は{}内の処理でのみ呼び出し可能
     #フロント. const y = {{x|tojson}} …x:Python側から受け取った変数 y:受け取ったxをJavaScript側で置き換えた後の変数
 
-"""
-#チャンネル作成フォーム表示 , methods=['POST']
-@app.route('/addchannel')
-def add_channel():
-    return render_template('modal/add-channel.html')
-"""
 
 #チャンネル作成 
 #POST(Webサーバに送る値を見えないところにくっつけて送るやり方、「このデータをやるから追加して」のお願い)
