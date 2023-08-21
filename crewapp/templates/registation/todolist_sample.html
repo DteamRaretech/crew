@@ -32,16 +32,17 @@
             </div>
             <h1>TODO-List</h1>
             <form>
-                <p class="item"><input class="task_value" type="varchar" name="title" placeholder="タイトル"/></p>
+                <p class="item"><input class="task_value" type="text" name="title" placeholder="タイトル"/></p>
                 <p class="item"><input class="message" type="text" name="detail" placeholder="内容"/></p>
                 <p class="item"><input class="target" type="date" name="fixed_date"><button class="task_submit" id="submit" type="submit">追加</button></p>
             </form>
             <div id="table">
                 <h2>List</h2>
                 <table>
-                  
                   <tr>
-                    <td></td>
+                    <td>タイトル</td>
+                    <td>内容</td>
+                    <td>期日</td>
                   </tr>
                 </table>
                 <ul class="task_list"></ul>
