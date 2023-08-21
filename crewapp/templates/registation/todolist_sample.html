@@ -31,13 +31,21 @@
                 <img src="../../static/img/edit.png">
             </div>
             <h1>TODO-List</h1>
-            <form>
-                <input class="task_value" type="text" />
-                <button class="task_submit" type="button">追加</button>
+            <form method="post">
+              <input class="task_value" type="text" name="todo_content" />
+              <input type="submit" name="" value="Add task">
+              <!--<input class="task_value" type="text" />
+              <button class="task_submit" type="button">追加</button>-->
             </form>
+            <div class="registration-button-container">
             <div id="table">
                 <h2>List</h2>
                 <ul class="task_list"></ul>
+                {% for todo in todo_list %}
+                  <li>{{ todo }}
+                    <button type="submit" id="Delete" name="todo_delete"> 削除 </button> 
+                  </li>
+                {% endfor %}
             </div>
         </div>
     </div>

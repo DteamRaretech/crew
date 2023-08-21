@@ -19,24 +19,26 @@ def hello_world():
 #TODO一覧画面表示
 @app.route('/todo')
 def show_todo():
+    uid = uuid.uuid4()
+    print("show_uid",uid)
     return render_template('registation/todolist_sample.html')
 
 #TODO受け取り
 @app.route('/todo', methods=['POST'])
 def write_todo():
-
     todo_list = []
-
     uid = uuid.uuid4()
     # todoの内容をhtmlより取得する
     todo_content = request.form.get('todo_content')
+    print(todo_content)
+    if todo_content == '':
+        flash('空のフォームがあります')
     todo_list.append(todo_content)
-
+    print("post_uid",uid)
     # todoの内容をデータベースに書き込む
     ## ダミーデータ
     dbConnect.createTodo(uid,'title',todo_content,'2023-08-16',1) 
-    
-    return render_template('registation/todolist.html',todo_list = todo_list)
+    return render_template('registation/todolist_sample.html',todo_list = todo_list)
 
 
 

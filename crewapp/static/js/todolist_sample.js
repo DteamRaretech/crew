@@ -27,6 +27,7 @@ const deleteTasks = (deleteButton) => {
   taskList.removeChild(chosenTask);
 };
 
+
 // 追加ボタンをクリックし、イベントを発動（タスクが追加）
 taskSubmit.addEventListener('click', evt => {
   evt.preventDefault();
