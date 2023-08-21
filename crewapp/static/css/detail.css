@@ -175,9 +175,9 @@ textarea{
 
 #add-message-button {
     position: absolute;
-    right: 0; /* ボタンを右端に配置 */
-    bottom: 0; /* ボタンをフォームの下端に配置 */
-    margin: 10px; /* マージンを調整して余白を確保 */
+    right: 0;
+    bottom: 0;
+    margin: 10px;
 }
 
 #add-message-button img{
