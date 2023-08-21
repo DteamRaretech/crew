@@ -18,8 +18,8 @@ def show_todo():
     #print("show_uid",uid,type(uid))
     todos = dbConnect.getTodoIds(str(uid))
     #print(todos)
-    #return render_template('registation/todolist_sample.html',todo_list = todos)
-    return render_template('registation/todolist_sample.html')
+    #return render_template('registation/todolist.html',todo_list = todos)
+    return render_template('registation/todolist.html')
 
 #TODO受け取り
 @app.route('/todo', methods=['POST'])
@@ -36,7 +36,7 @@ def write_todo():
     ## ダミーデータ
     dbConnect.createTodo(uid,title,'task','2023-08-16',1) 
     print("todo_list",todo_list)
-    return render_template('registation/todolist_sample.html',todo_list = todo_list)
+    return render_template('registation/todolist.html',todo_list = todo_list)
 
 
 
