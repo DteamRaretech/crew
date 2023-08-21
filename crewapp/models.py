@@ -190,6 +190,22 @@ class dbConnect:
             cursor.close() # コネクタをクローズし全ての処理が完了
 
     #関数：read todoテーブル
+    def getTodoIds(uid):
+        try:
+            connection = DB.getConnection()
+            cursor = connection.cursor()
+            #sql = "SELECT * fROM todo WHEHE uid = %s;"
+            sql = "SELECT * fROM todo;"
+            print("sql",sql)
+            #cursor.execute(sql, ("970af84c-dd40-47ff-af23-282b72b7cca8",))
+            cursor.execute(sql)
+            messages = cursor.fetchall()
+            return messages
+        except Exception as e:
+            print(e + 'が発生しています')
+            abort(500)
+        finally:
+            cursor.close()
 
 
     #関数：update todoテーブル

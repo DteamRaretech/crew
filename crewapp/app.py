@@ -20,12 +20,14 @@ def hello_world():
 @app.route('/todo')
 def show_todo():
     uid = uuid.uuid4()
-    print("show_uid",uid)
-    return render_template('registation/todolist_sample.html')
+    print("show_uid",uid,type(uid))
+    todos = dbConnect.getTodoIds(str(uid))
+    print("todos",todos)
+    return render_template('registation/todolist_sample.html',todo_list = todos)
 
 #TODO受け取り
 @app.route('/todo', methods=['POST'])
-def write_todo():
+def write_todo(uid):
     todo_list = []
     uid = uuid.uuid4()
     # todoの内容をhtmlより取得する
