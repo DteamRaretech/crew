@@ -14,6 +14,11 @@ app.permanent_session_lifetime = timedelta(days=30)
 #TODO一覧画面表示
 @app.route('/todo')
 def show_todo():
+    uid = uuid.uuid4()
+    #print("show_uid",uid,type(uid))
+    todos = dbConnect.getTodoIds(str(uid))
+    #print(todos)
+    #return render_template('registation/todolist_sample.html',todo_list = todos)
     return render_template('registation/todolist_sample.html')
 
 #TODO受け取り
@@ -24,14 +29,14 @@ def write_todo():
 
     uid = uuid.uuid4()
     # todoの内容をhtmlより取得する
-    todo_content = request.form.get('todo_content')
-    todo_list.append(todo_content)
+    title = request.form.get('title')
+    todo_list.append(title)
 
     # todoの内容をデータベースに書き込む
     ## ダミーデータ
-    dbConnect.createTodo(uid,'title',todo_content,'2023-08-16',1) 
-    
-    return render_template('registation/todolist.html',todo_list = todo_list)
+    dbConnect.createTodo(uid,title,'task','2023-08-16',1) 
+    print("todo_list",todo_list)
+    return render_template('registation/todolist_sample.html',todo_list = todo_list)
 
 
 
