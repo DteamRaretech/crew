@@ -63,9 +63,6 @@ const pagination = () => {
         deleteButton.classList.add("delete-button");
         li.appendChild(deleteButton);
         // ゴミ箱ボタンが押された時にdeleteモーダルを表示させる
-
-          // aタグにhrefを追加
-          //const channelURL = `/delete/${channel.id}`;
       }
 
       // もしチャンネルに説明文が登録されていたら吹き出しを作成（hover時に表示される）
