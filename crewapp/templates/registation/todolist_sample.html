@@ -43,10 +43,13 @@
                     <th>内容</th>
                     <th>期日</th>
                   </tr>
-                  <tr>
-                    {% for todo in todo_list %}
-                    <td>{{todo}}</td>
-                    {%- endfor %}
+                    {% for todos in todo_list %}
+                    <tr>
+                      {% for todo in todos %}
+                          <td>{{todo}}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
                   </tr>
                 </table>
                 <ul class="task_list"></ul>

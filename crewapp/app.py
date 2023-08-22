@@ -17,28 +17,32 @@ def show_todo():
     uid = uuid.uuid4()
     #print("show_uid",uid,type(uid))
     todos = dbConnect.getTodoIds(str(uid))
-    print(todos[0])
-    return render_template('registation/todolist_sample.html',todo_list = todos[0])
-    #return render_template('registation/todolist_sample.html')
+    
+    # 表示に必要な情報を抽出する
+    keys_to_access = ['detail','fixed_date'] 
+    value_list = []
+    for todo in todos:
+        values = [todo[k] for k in keys_to_access]
+        value_list.append(values)
+    
+    return render_template('registation/todolist_sample.html',todo_list = value_list)
 
 #TODO受け取り
 @app.route('/todo', methods=['POST'])
 def write_todo():
 
     todo_list = []
-
     uid = uuid.uuid4()
+
     # todoの内容をhtmlより取得する
     title = request.form.get('title')
     detail = request.form.get('detail')
     fixed_date = request.form.get('fixed_date')
-    
     todo_list.append([title,title,fixed_date])
+
     # todoの内容をデータベースに書き込む
     ## ダミーデータ
     dbConnect.createTodo(uid,title,detail,fixed_date,1) 
-    #print("todo_list",todo_list)
-    #return render_template('registation/todolist_sample.html',todo_list = todo_list)
     return render_template('registation/todolist_sample.html')
 
 
