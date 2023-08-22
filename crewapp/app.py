@@ -16,7 +16,7 @@ app.permanent_session_lifetime = timedelta(days=30)
 def show_todo():
     uid = uuid.uuid4()
     #print("show_uid",uid,type(uid))
-    todos = dbConnect.getTodoIds(str(uid))
+    todos = dbConnect.getTodoIds(uid)
     
     # 表示に必要な情報を抽出する
     keys_to_access = ['detail','fixed_date'] 

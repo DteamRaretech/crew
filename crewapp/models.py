@@ -192,13 +192,13 @@ class dbConnect:
     #関数：read todoテーブル
     def getTodoIds(uid):
         try:
+            uid = str(uid)
             connection = DB.getConnection()
             cursor = connection.cursor()
-            #sql = "SELECT * fROM todo WHEHE uid = %s;"
-            sql = "SELECT * fROM todo;"
-            print("sql",sql)
-            #cursor.execute(sql, ("970af84c-dd40-47ff-af23-282b72b7cca8",))
-            cursor.execute(sql)
+            sql = "SELECT * FROM todo WHERE uid=%s;"
+            #テスト用
+            #uid='970af84c-dd40-47ff-af23-282b72b7cca8'
+            cursor.execute(sql, (uid))
             messages = cursor.fetchall()
             return messages
         except Exception as e:
