@@ -88,16 +88,22 @@ body {
 }
 
 #channels-list{
-    padding-top: 20px;
+    padding-top: 30px;
 }
 
 .channel-description-tooltip{
-    width: calc(50% - 10px);
-    margin:auto;
-    border: solid 1px #000;
-    border-radius: 20px;
-    background-color: rgba(99, 130, 162, 0.8)
+  width: calc(50% - 10px);
+  margin:auto;
+  margin-top: 20px;
+  border: solid 1px #000;
+  border-radius: 20px;
+  background-color: rgba(99, 130, 162, 0.8)
 }
+
+.channel-description-tooltip li{
+  margin-right: 30px;
+}
+
 
 .channel-description-tooltip a{
     font-size: 1.5rem;
