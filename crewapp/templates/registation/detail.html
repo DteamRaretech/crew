@@ -32,6 +32,7 @@
             </div>
              <!--read message-->
           <div class="flex-content">
+            <div id="scroller__inner">
             {% if messages|length > 0 %} {% for message in messages %} {% if
               message.uid == uid %}
             <div class="my-massages">
@@ -45,6 +46,7 @@
             {% endif %} {% endfor %} {% else %}
             <div id="no-message"><p>メッセージがありません</p></div>
             {% endif %}
+          </div>
           </div>
           <!--post message box-->
           <div class="fixed-content">
@@ -61,5 +63,6 @@
         </div>
       </div>
     </div>
+    <script src="../../static/js/detail.js"></script>
   </body>
 </html>
