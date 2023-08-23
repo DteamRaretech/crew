@@ -14,6 +14,7 @@ app.permanent_session_lifetime = timedelta(days=30)
 #TODO一覧画面表示
 @app.route('/todo')
 def show_todo():
+<<<<<<< HEAD
     uid = session.get("uid")
     if uid is None:
         return redirect('/login')
@@ -28,6 +29,14 @@ def show_todo():
         value_list.append(values)
     
     return render_template('registation/todolist_sample.html',todo_list = value_list)
+=======
+    uid = uuid.uuid4()
+    #print("show_uid",uid,type(uid))
+    todos = dbConnect.getTodoIds(str(uid))
+    #print(todos)
+    #return render_template('registation/todolist.html',todo_list = todos)
+    return render_template('registation/todolist.html')
+>>>>>>> c5d754a0cd867d89c3df106aa09b61127b5d1a06
 
 #TODO受け取り
 @app.route('/todo', methods=['POST'])
@@ -42,8 +51,15 @@ def write_todo():
     fixed_date = request.form.get('fixed_date')
     
     # todoの内容をデータベースに書き込む
+<<<<<<< HEAD
     dbConnect.createTodo(uid,title,detail,fixed_date,1) 
     return redirect('/todo')
+=======
+    ## ダミーデータ
+    dbConnect.createTodo(uid,title,'task','2023-08-16',1) 
+    print("todo_list",todo_list)
+    return render_template('registation/todolist.html',todo_list = todo_list)
+>>>>>>> c5d754a0cd867d89c3df106aa09b61127b5d1a06
 
 
 
