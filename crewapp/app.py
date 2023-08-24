@@ -27,7 +27,7 @@ def show_todo():
         values = [todo[k] for k in keys_to_access]
         value_list.append(values)
     
-    return render_template('registation/todolist_sample.html',todo_list = value_list)
+    return render_template('registation/todolist.html',todo_list = value_list)
 
 #TODO受け取り
 @app.route('/todo', methods=['POST'])
