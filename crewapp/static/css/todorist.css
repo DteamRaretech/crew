@@ -120,16 +120,19 @@ h1 {
     height: 1.9rem;
     width: 25rem;
     margin-top: 5px;
+    margin-left: 45px;
 }
 .message{
     height: 2.5rem;
     width: 25rem;
     margin-top: 2px;
+    margin-left: 45px;
 }
 .target{
     height: 2.5rem;
     width: 10rem;
     margin-top: 2px;
+    margin-left: 45px;
 }
   
 .task_submit {
@@ -137,17 +140,13 @@ h1 {
     width: 2rem;
     margin-top: 2px;    
 }
-.item{
-    margin-left: 45px;
-}
-  
+
 #table {
     background-color:#6382a2;
     color: white;
-    width: 95%;
-    height: 450px;
+    width: 100%;
+    height: 95%;
     border-radius: 1rem;
-    margin-left: 35px;
     margin-top: 5px;
     text-align: center
 }
@@ -156,5 +155,13 @@ h2 {
     color: white;
     font-size:2.5rem;
     padding: 10px;
+}
+table.table_date{
+    border:3px white solid;
+    border-collapse: collapse;
+    margin-left: 10px;
+    }
+th,td{
+    border:1px white solid;
 }
   

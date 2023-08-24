@@ -21,7 +21,7 @@ def show_todo():
     todos = dbConnect.getTodoIds(uid)
     
     # 表示に必要な情報を抽出する
-    keys_to_access = ['detail','fixed_date'] 
+    keys_to_access = ['title','detail','fixed_date'] 
     value_list = []
     for todo in todos:
         values = [todo[k] for k in keys_to_access]
