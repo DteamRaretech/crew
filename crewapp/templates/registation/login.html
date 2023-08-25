@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+    <html lang="en" dir="ltr">
+        <head>
+            <meta charaset="utf-8">
+            <title>login</title>
+            <link rel="stylesheet" href="../../static/css/style.css">
+        </head>
+        <body>
+          <div class="container">
+            <form class="box" action="" method="post">
+                <h1>Login</h1>
+                <input type="text" name="email" placeholder="Email">
+                <input type="password" name="password" placeholder="Password">
+                <input type="submit" name="" value="Login">
+                    <!-- flash message-->
+                    <div class="registration-button-container">
+                        {% with messages = get_flashed_messages() %} {% if messages %}
+                        <ul class="flashes">
+                          {% for message in messages %}
+                          <li>{{ message }}</li>
+                          {% endfor %}
+                        </ul>
+                        {% endif %} {% endwith %}
+                    </div>
+
+                <a class="switch-form" href="{{ url_for('signup') }}">サインアップ</a>
+            </form>
+
+        </body>
+        <footer>
+            <p>Raretech Hackathon 2023 Summer D-TEAM</p>
+        </footer>
+          </div>
+    </html>

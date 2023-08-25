@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head >
+    <title>チャットアプリ</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../static/css/index.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+  </head>
+  <body>
+  <div class="app">
+    <div class="sidebar">
+      <header><img src="../../static/img/CREW-logo2.png" alt="CREW"></header>
+      <ul>
+      <li>
+        <a href="/"><img src="../../static/img/CREW-side-logo.png">HOME</a>
+      </li>
+      <li> 
+        <a href="/todo"><img src="../../static/img/CREW-side-logo2.png">Task</a>
+      </li>
+      <li>
+        <a href="/login"><img src="../../static/img/CREW-side-logo3.png">Sign Out</a>
+      </li>
+    </ul>
+    </div>
+    <div class="mainbar">
+      <div class="content-header">
+        <p>HOME</p>
+      </div>     
+      <div id="channels-list">
+        <div id="pagination-wrapper">
+          <div>
+            <ul class="channel-box"></ul>
+            <div class="pagination-container">
+              <p id="prev"><span>[</span></p>
+              <ul class="pagination"></ul>
+              <p id="next"><span>]</span></p>  
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="add_button">
+      <a href="addchannel">
+        <img src="../../static/img/add_button5.png" alt="追加">
+        <p>Add Channel</p>
+      </a>
+      </div>
+    </div>
+  </div>
+    <script type="text/javascript">
+      // prettier-ignore
+      const channels = JSON.parse('{{ channels|tojson }}');
+      // prettier-ignore
+      const uid = JSON.parse('{{ uid|tojson }}');
+    </script>
+    <script src ='../../static/js/pagination.js'></script>
+  </body>
+</html>

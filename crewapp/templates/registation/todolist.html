@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head >
+    <title>チャットアプリ</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../static/css/todorist.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+  </head>
+  <body>
+    <div class="app">
+        <div class="main">
+            <div class="sidebar">
+                <header>
+                    <img class="sidebar-logo" src="../../static/img/CREW-logo2.png" alt="crew logo">
+                </header>
+                <ul>
+                    <li>
+                      <a href="/"><img src="../../static/img/CREW-side-logo.png">HOME</a>
+                    </li>
+                    <li>
+                      <a href="/todo"><img src="../../static/img/CREW-side-logo2.png">Task</a>
+                    </li>
+                    <li>
+                      <a href="/login"><img src="../../static/img/CREW-side-logo3.png">Sign Out</a>
+                    </li>
+                  </ul>
+            </div>
+            <div class="content">
+            <div class="content-header">
+                <p>TO DO List</p>
+                <img src="../../static/img/edit.png">
+            </div>
+            <h3>TODO-List</h3>
+            <form method="post">
+                <p class="item"><input class="task_value" type="text" name="title" placeholder="Task"/></p>
+                <p class="item"><input class="message" type="text" name="detail" placeholder="Description"/></p>
+                <p class="item"><input class="target" type="date" name="fixed_date"><button class="task_submit" id="submit" type="submit">Add Submit</button></p>
+            </form>
+            <div id="table">
+                <h3>List</h3>
+                <table class="table_date">
+                  <tr>
+                    <th>タイトル</th>
+                    <th>内容</th>
+                    <th>期日</th>
+                    <th></th>
+                  </tr>
+                    {% for todos in todo_list %}
+                    <tr>
+                      {% for todo in todos %}
+                          <td>{{todo}}</td>
+                        {% endfor %}
+                        <td><button class="delete_button" data-title="{{ todos[0] }}">done</button></td>
+                    </tr>
+                    {% endfor %}
+                  </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+  </body>

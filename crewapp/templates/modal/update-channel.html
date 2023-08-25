@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Room</title>
+  <link rel="stylesheet" href="../../static/css/modal.css"/>
+</head>
+<body>
+  <div class="modal-channel">
+    <div class="modal-channel-header">
+      <h5>Update Room</h5>
+    </div>
+    <div class="modal-channel-container"></div>
+      <form
+      name="updateChannelForm"
+      class="modal-body"
+      action="/updatechannel/{{cid}}"
+      method="POST"
+      >
+      <input
+        type="text"
+        placeholder="Channel name"
+        class="channel-form-input"
+        name="channelTitle"
+      />
+      <input
+        type="text"
+        placeholder="Channel description"
+        class="channel-form-input"
+        name="channelDescription"
+      />
+      <input type="hidden" name="cid" value="{{ cid }}" />
+      <button id="update-channel-confirmation-button">Update</button>
+      </form>
+  </div>
+  <script src=""></script>
+</body>
+</html>

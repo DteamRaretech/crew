@@ -1,0 +1,56 @@
+@font-face {
+    font-family:'myfont';
+    src: url(../font/amongus\ vector.ttf);
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: #6382a2;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* 画面の高さいっぱいに表示 */
+  }
+  
+  h5 {
+    font-family: myfont;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    max-width: 300px; /* 必要に応じて調整 */
+    margin: 0 auto; /* 中央に配置 */
+  }
+  
+  .channel-form-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .confirmation-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .confirmation-button:hover {
+    background-color: #0056b3;
+  }
+  
+  

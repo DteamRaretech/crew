@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Room</title>
+  <link rel="stylesheet" href="../../static/css/modal.css"/>
+</head>
+<body>
+    <div class="modal-add-channel">
+        <div class="add-channel-header">
+            <h5>Add Room</h5>
+        </div>
+        <div class="modal-add-channel-container">
+            <form name="addChannelForm" class="modal-body" action="/addchannel" method="POST">
+              <input
+                type="text"
+                placeholder="Channel name"
+                class="channel-form-input"
+                name="channelTitle"
+              />
+              <input
+                type="text"
+                placeholder="Channel description"
+                class="channel-form-input"
+                name="channelDescription"
+              />
+              <button id="add-channel-confirmation-button">Set</button>
+            </form>
+        </div>
+    </div>
+    <script src=""></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>chatroom</title>
+  <link rel="stylesheet" href="../../static/css/detail.css"/>
+</head>
+
+<body>
+    <div class="app"> <!--ページ全体-->
+      <div class="main">
+        <div class="sidebar">
+            <header>
+                <img class="sidebar-logo" src="../../static/img/CREW-logo2.png" alt="crew logo">
+            </header>
+            <ul>
+              <li>
+                <a href="/"><img src="../../static/img/CREW-side-logo.png">HOME</a>
+              </li>
+              <li> 
+                <a href="/todo"><img src="../../static/img/CREW-side-logo2.png">Task</a>
+              </li>
+              <li>
+                <a href="/login"><img src="../../static/img/CREW-side-logo3.png">Sign Out</a>
+              </li>
+              </ul>
+        </div>
+        <div class="content">
+            <div class="content-header">
+                <p>{{ channel.name }}</p>
+                <a href="/updatechannel/{{channel.id}}"><img src="../../static/img/edit.png"></a>
+            </div>
+             <!--read message-->
+          <div class="flex-content">
+            <div id="scroller__inner">
+            {% if messages|length > 0 %} {% for message in messages %} {% if
+              message.uid == uid %}
+            <div class="my-massages">
+                <p class="right-box">{{ message.message }}</p>
+            </div>
+            {% else %}
+            <div class="crew-massages">
+              <p><span class="crew-name">{{ message.user_name }}</span></p>
+              <p class="left-box">{{ message.message }}</p>
+            </div>
+            {% endif %} {% endfor %} {% else %}
+            <div id="no-message"><p>メッセージがありません</p></div>
+            {% endif %}
+          </div>
+          </div>
+          <!--post message box-->
+          <div class="fixed-content">
+            <form class="typing-box" action="/message" method="POST" name="newMessageForm">
+                <textarea name="message" id="message" autofocus placeholder="Pls enter msg"></textarea>
+                    <input type="hidden" name="cid" value="{{ channel.id }}" /> 
+                <div id="message-send-tooltip">
+                    <button type="submit" id="add-message-button">
+                        <img src="../../static/img/send-rocket.png">
+                    </button>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../../static/js/detail.js"></script>
+  </body>
+</html>

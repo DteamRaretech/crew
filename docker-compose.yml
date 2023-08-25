@@ -5,7 +5,7 @@ version: "3.9"
 services:
   db:
     # コンテナ名をmysqlに設定
-    container_name: MySQL
+    container_name: CrewMysql
     # MySQLのDockerfileをビルドする
     build:
       # ビルドコンテキストはカレントディレクトリ
@@ -21,7 +21,7 @@ services:
     # コンテナ内の環境変数を設定
     environment:
       - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=chatapp
+      - MYSQL_DATABASE=crewapp
       - MYSQL_USER=testuser
       - MYSQL_PASSWORD=testuser
     # DBのコンテナのヘルスチェックを行う
@@ -39,7 +39,7 @@ services:
 
   app:
     # コンテナ名をFlaskに設定
-    container_name: Flask
+    container_name: CrewFlask
     # FlaskのDockerfileをビルドする
     build:
       # ビルドコンテキストはカレントディレクトリ
@@ -48,7 +48,7 @@ services:
     # ボリュームを指定
     # ローカルのカレントディレクトリをコンテナの/codeにマウントする
     volumes:
-      - ./ChatApp:/code
+      - ./crewapp:/code
     # ローカルの5000番ポートとコンテナの5000番ポートをつなぐ
     ports:
       - "5000:5000"
