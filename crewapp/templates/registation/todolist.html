@@ -30,19 +30,20 @@
                 <p>TO DO List</p>
                 <img src="../../static/img/edit.png">
             </div>
-            <h1>TODO-List</h1>
+            <h3>TODO-List</h3>
             <form method="post">
-                <p class="item"><input class="task_value" type="text" name="title" placeholder="タイトル"/></p>
-                <p class="item"><input class="message" type="text" name="detail" placeholder="内容"/></p>
-                <p class="item"><input class="target" type="date" name="fixed_date"><button class="task_submit" id="submit" type="submit">追加</button></p>
+                <p class="item"><input class="task_value" type="text" name="title" placeholder="Task"/></p>
+                <p class="item"><input class="message" type="text" name="detail" placeholder="Description"/></p>
+                <p class="item"><input class="target" type="date" name="fixed_date"><button class="task_submit" id="submit" type="submit">Add Submit</button></p>
             </form>
             <div id="table">
-                <h2>List</h2>
-                <table class="table_date" width="98%" align="center">
+                <h3>List</h3>
+                <table class="table_date">
                   <tr>
                     <th>タイトル</th>
                     <th>内容</th>
                     <th>期日</th>
+                    <th></th>
                   </tr>
                     {% for todos in todo_list %}
                     <tr>
@@ -57,5 +58,4 @@
             </div>
         </div>
     </div>
-  <script type="text/javascript" src="../../static/js/todolist.js"></script>
   </body>
