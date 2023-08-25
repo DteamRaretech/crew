@@ -49,6 +49,7 @@
                       {% for todo in todos %}
                           <td>{{todo}}</td>
                         {% endfor %}
+                        <td><button class="delete_button" data-title="{{ todos[0] }}">done</button></td>
                     </tr>
                     {% endfor %}
                   </tr>
@@ -56,5 +57,5 @@
             </div>
         </div>
     </div>
-  <script type="text/javascript" src="../../static/js/todolist_sample.js"></script>
+  <script type="text/javascript" src="../../static/js/todolist.js"></script>
   </body>
